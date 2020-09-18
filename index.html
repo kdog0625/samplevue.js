@@ -10,10 +10,10 @@
 
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
-  <!--html方式で出力(しかし今のままでは<h1>も反映する-->
-  <div>{{ html }}</div>
-<!--h1ですにするにはv-htmlディレクトリを使う。注意点としてクロスサイトスクリプティングの危険性があるのでユーザーから提供されるコンテンツを置かない。信頼のおけるものの時のみに使用する-->
-  <div v-html="html"></div>
+  <!--v-bindは属性に対して表示させる-->
+  <a v-bind:href="url">Google</a>
+  <!--v-bindは省略もできる-->
+  <a :href="url">Google</a>
 </div>
 
 <script>
@@ -21,7 +21,7 @@
   new Vue({
    el:'#app',
    data: {
-   html:'<h1>h1です</h1>'
+    url:'https//google.com'
    }
  })
 </script>
