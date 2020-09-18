@@ -10,9 +10,9 @@
 
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
-<p>{{ message }}</p>
-<!-- v-textはvue.js特有の属性で、上の<p>{{ message }}</p>と同様 -->
-<p v-text="message"></p>
+<p v-once>{{ message }}</p>
+<!-- 1度描画させたら変化させないのがv-once -->
+<p>{{sayHi()}}</p>
 </div>
 
 <script>
@@ -21,6 +21,12 @@
    el:'#app',
    data: {
     message:'HelloWorld!',
+   },
+   methods:{
+     sayHi(){
+       this.message='Hello VueJS'
+       return 'HI'
+     }
    }
  })
 </script>
