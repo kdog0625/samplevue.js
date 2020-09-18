@@ -12,6 +12,9 @@
 <div id="app">
   <p>現在{{number}}回クリックされている</p>
   <button v-on:click="countUp">カウントアップ</button>
+  <p v-on:mousemove="changeMousePositon">マウスを載せてください</p>
+  <!--mousemoveはマウスを少しでも動かした時にイベントを発火させる。-->
+  <p>X:{{x}},Y:{{y}}</p>
 </div>
 
 <script>
@@ -25,6 +28,10 @@
    methods:{
      countUp: function(){
        this.number+=1
+     },
+     changeMousePositon: function(event){
+      this.x=event.clientX;
+      this.y=event.clientY;
      }
    }
  })
