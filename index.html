@@ -10,18 +10,22 @@
 
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
-  <!--動的に属性のv-bindの引数を扱える-->
-  <a :[attribute]="url">Google</a>
+  <p>現在{{number}}回クリックされている</p>
+  <button v-on:click="countUp">カウントアップ</button>
 </div>
 
 <script>
   //new Vueはvue.jsの心臓部分。
   new Vue({
    el:'#app',
-   data: {
-    url:'https//google.com',
-    //hrefを動的に表現できる。
-    attribute: 'href'
+   data:{
+     number:0
+   },
+   //countUpにすることでカウントを数えられる。
+   methods:{
+     countUp: function(){
+       this.number+=1
+     }
    }
  })
 </script>
