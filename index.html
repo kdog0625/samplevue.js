@@ -11,10 +11,7 @@
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
 <p>{{ message }}</p>
-<p>{{number + 5}}</p>
-<!--二重中かっこをつけることで使えるようになる。-->
-<button v-on:click="reverseMessage">メッセージ反転</button>
-<!--　v-onはvue.jsが用意している特別な属性。その後にDOMイベント(ブラウザが用意してくれるメソッド　-->
+<p>{{sayHi()}}</p>
 </div>
 
 <script>
@@ -25,17 +22,12 @@
    //dataって言うオブジェクトを書ける。
    data: {
     message:'HelloWorld!',
-    number:3
    },
+   //sayHiで'Hi'と言う文字列を返すだけのメソッドを用意
    methods: {
-     reverseMessage: function(){
-       this.message = this.message
-       //this.messageと書くことでこのビューインスタンスのメッセージにアクセスしますと言う意味になる。
-       //splitで配列に入れて、reverseで反転させる。joinで加える。
-       .split('')
-       .reverse()
-       .join('');
-     }
+    sayHi: function(){
+      return 'Hi';
+    }
    }
  })
 </script>
