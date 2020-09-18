@@ -11,23 +11,16 @@
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
 <p>{{ message }}</p>
-<p>{{sayHi()}}</p>
+<!-- v-textはvue.js特有の属性で、上の<p>{{ message }}</p>と同様 -->
+<p v-text="message"></p>
 </div>
 
 <script>
   //new Vueはvue.jsの心臓部分。
   new Vue({
    el:'#app',
-   //idがappのところでvueインスタンスを使う。
-   //dataって言うオブジェクトを書ける。
    data: {
     message:'HelloWorld!',
-   },
-   //sayHiで'Hi'と言う文字列を返すだけのメソッドを用意
-   methods: {
-    sayHi: function(){
-      return 'Hi';
-    }
    }
  })
 </script>
