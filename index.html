@@ -10,10 +10,8 @@
 
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
-  <!--v-bindは属性に対して表示させる-->
-  <a v-bind:href="url">Google</a>
-  <!--v-bindは省略もできる-->
-  <a :href="url">Google</a>
+  <!--動的に属性のv-bindの引数を扱える-->
+  <a :[attribute]="url">Google</a>
 </div>
 
 <script>
@@ -21,7 +19,9 @@
   new Vue({
    el:'#app',
    data: {
-    url:'https//google.com'
+    url:'https//google.com',
+    //hrefを動的に表現できる。
+    attribute: 'href'
    }
  })
 </script>
