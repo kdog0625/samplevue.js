@@ -10,10 +10,11 @@
 
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
-  <p>現在{{number}}回クリックされている</p>
-  <!-- <button v-on:[event]="countUp">カウントアップ</button> -->
-  <!--v-onディレクトリの省略記号(@を使う)-->
-  <button @click="countUp">カウントアップ</button>
+  <!--v-modelによって初期値のように扱い、vue.js側にもtextの値が反映される-->
+  <input type="text" v-model="message">
+  <p>{{message}}</p>
+  
+  
 </div>
 
 <script>
@@ -21,14 +22,7 @@
   new Vue({
    el:'#app',
    data:{
-     number:0,
-     event: 'click'
-   },
-   //countUpにすることでカウントを数えられる。
-   methods:{
-     countUp: function(){
-       this.number+=1;
-     }
+    message:'こんにちは'
    }
  })
 </script>
