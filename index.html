@@ -10,11 +10,12 @@
 
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
-  <!--v-modelによって初期値のように扱い、vue.js側にもtextの値が反映される-->
-  <input type="text" v-model="message">
-  <p>{{message}}</p>
-  
-  
+  <p>{{counter}}</p>
+  <button @click="counter += 1">+1</button>
+   <!-- counterに応じて動的に出力を変える -->
+  <!-- <p>{{counter >3 ? '3より上' : '3以下'}}</p> -->
+  <!-- computedプロパティ(動的なプロパティを使う) -->
+  <p>{{ lessThanThree }}</p>
 </div>
 
 <script>
@@ -22,8 +23,15 @@
   new Vue({
    el:'#app',
    data:{
-    message:'こんにちは'
-   }
+     //データというプロパティはあくまで初期値なので動的プロパティは使えない。
+   counter:0
+    },
+    //computedプロパティは動的プロパティを使えるようにする
+    computed:{
+      lessThanThree: function(){
+        return this.counter >3 ? '3より上' : '3以下'
+      }
+    }
  })
 </script>
 </body>
