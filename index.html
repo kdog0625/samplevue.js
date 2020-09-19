@@ -11,14 +11,8 @@
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
   <p>現在{{number}}回クリックされている</p>
-  <button v-on:click="countUp(2)">カウントアップ</button>
-  <!--(2)とすることで2倍になる-->
-  <p v-on:mousemove="changeMousePositon(3,$event)">マウスを載せてください
-  <span v-on:mousemove.stop>反応しないでください</span></p>
-  <!--stopと指定すれば反応しなくなる。-->
-  <a v-on:click.prevent="noEvent" href="https//google.com">Google</a>
-  <!--引数を指定することにより割り算ができる-->
-  <p>X:{{x}},Y:{{y}}</p>
+  <button v-on:[event]="countUp">カウントアップ</button>
+  <!--eventと指定して動的にできる-->
 </div>
 
 <script>
@@ -27,27 +21,13 @@
    el:'#app',
    data:{
      number:0,
-     x:0,
-     y:0
+     event: 'click'
    },
    //countUpにすることでカウントを数えられる。
    methods:{
-     countUp: function(times){
-       this.number+=1*times
-     },
-     changeMousePositon: function(dividNumber,event){
-    
-      this.x=event.clientX/dividNumber;
-      this.y=event.clientY/dividNumber;
-     },
-    //  noEvent: function(event){
-    //    event.stopPropagation()
-    //    //これでspanタグにいるときは反応しないようにできる
-    //  }
-    //  noEvent: function(event){
-    //    event.preventDefault()
-    //    //これ(prevent)でURLをクリックしても飛ばないようにできる
-    //  }
+     countUp: function(){
+       this.number+=1;
+     }
    }
  })
 </script>
