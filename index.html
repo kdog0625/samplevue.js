@@ -11,10 +11,8 @@
 
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
-  <!--動的に色を適用する(場合わけできるのがvue.js)-->
-  <h1 :class="classObject">Hello</h1>
-  <button @click="isActive=!isActive">切り替え</button>
-  <h1 :class="[{red: isActive},bg]">Hello</h1>
+  <!--style属性w使う-->
+<h1 :style="{color: textColor,'background-color':bgColor}">Hello</h1>
 </div>
 
 <script>
@@ -22,17 +20,9 @@
   new Vue({
    el:'#app',
    data:{
-    isActive:true,
-    color:'red',
-    bg:'bg-blue'
-    },
-    computed:{
-      classObject:function(){
-        return {
-          red: this.isActive,'bg-blue' : !this.isActive
-      }
-      }
-    }
+     textColor:'red',
+     bgColor:'blue'
+   }
  })
 </script>
 </body>
