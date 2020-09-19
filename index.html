@@ -4,19 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <script src="vue.js"></script>
 
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
-  <p>{{counter}}</p>
-  <button @click="countUp">+1</button>
-  <button @click="countUp()">+1</button>
-  <!-- computedプロパティは()をつけない -->
-  <p>{{ doubleCounterComputed }}</p>
-   <!-- (methodを使う場合()は必ずつける。javascript方式だから。) -->
-  <p>{{ doubleCounterMethod() }}</p>
+  <!--動的に色を適用する(場合わけできるのがvue.js)-->
+  <h1 :class="classObject">Hello</h1>
+  <button @click="isActive=!isActive">切り替え</button>
 </div>
 
 <script>
@@ -24,21 +21,12 @@
   new Vue({
    el:'#app',
    data:{
-     //データというプロパティはあくまで初期値なので動的プロパティは使えない。
-   counter:0
+    isActive:true
     },
-    //computedプロパティは動的プロパティを使えるようにする
     computed:{
-      doubleCounterComputed: function(){
-        return this.counter *2;
+      classObject:function(){
+        return {red: this.isActive,'bg-blue' : !this.isActive
       }
-    },
-    methods:{
-      countUp: function(){
-        this.counter +=1;
-      },
-      doubleCounterMethod: function(){
-        
       }
     }
  })
