@@ -12,7 +12,7 @@
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
   <!--style属性w使う-->
-<h1 :style="{color: textColor,'background-color':bgColor}">Hello</h1>
+<h1 :style="styleObject">Hello</h1>
 </div>
 
 <script>
@@ -20,8 +20,11 @@
   new Vue({
    el:'#app',
    data:{
-     textColor:'red',
-     bgColor:'blue'
+     styleObject:{
+      color: 'red',
+      'background-color':blue
+     }
+    
    }
  })
 </script>
