@@ -12,10 +12,10 @@
 <div id="app">
   <p>{{counter}}</p>
   <button @click="counter += 1">+1</button>
-   <!-- counterに応じて動的に出力を変える -->
-  <!-- <p>{{counter >3 ? '3より上' : '3以下'}}</p> -->
   <!-- computedプロパティ(動的なプロパティを使う) -->
-  <p>{{ lessThanThree }}</p>
+  <p>{{ lessThanThreeComputed }}</p>
+   <!-- (methodを使う場合) -->
+  <p>{{ lessThanThreeMethod() }}</p>
 </div>
 
 <script>
@@ -26,9 +26,17 @@
      //データというプロパティはあくまで初期値なので動的プロパティは使えない。
    counter:0
     },
+    //methodsプロパティは少しでも再描画されたら実行される(関係ないものも巻き込む)。
+    //computedプロパティは指定したもののみ反映される。
     //computedプロパティは動的プロパティを使えるようにする
     computed:{
-      lessThanThree: function(){
+      lessThanThreeComputed: function(){
+        return this.counter >3 ? '3より上' : '3以下'
+      }
+    },
+    //methodsを使う場合
+    methods:{
+      lessThanThreeMethod: function(){
         return this.counter >3 ? '3より上' : '3以下'
       }
     }
