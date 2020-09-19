@@ -11,11 +11,12 @@
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
   <p>{{counter}}</p>
-  <button @click="counter += 1">+1</button>
-  <!-- computedプロパティ(動的なプロパティを使う) -->
-  <p>{{ lessThanThreeComputed }}</p>
-   <!-- (methodを使う場合) -->
-  <p>{{ lessThanThreeMethod() }}</p>
+  <button @click="countUp">+1</button>
+  <button @click="countUp()">+1</button>
+  <!-- computedプロパティは()をつけない -->
+  <p>{{ doubleCounterComputed }}</p>
+   <!-- (methodを使う場合()は必ずつける。javascript方式だから。) -->
+  <p>{{ doubleCounterMethod() }}</p>
 </div>
 
 <script>
@@ -26,18 +27,18 @@
      //データというプロパティはあくまで初期値なので動的プロパティは使えない。
    counter:0
     },
-    //methodsプロパティは少しでも再描画されたら実行される(関係ないものも巻き込む)。
-    //computedプロパティは指定したもののみ反映される。
     //computedプロパティは動的プロパティを使えるようにする
     computed:{
-      lessThanThreeComputed: function(){
-        return this.counter >3 ? '3より上' : '3以下'
+      doubleCounterComputed: function(){
+        return this.counter *2;
       }
     },
-    //methodsを使う場合
     methods:{
-      lessThanThreeMethod: function(){
-        return this.counter >3 ? '3より上' : '3以下'
+      countUp: function(){
+        this.counter +=1;
+      },
+      doubleCounterMethod: function(){
+        
       }
     }
  })
