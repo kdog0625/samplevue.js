@@ -26,18 +26,16 @@
    }
 
   var vm=new Vue({
-    el:"#app",
     data:data,
     computed:{
       myData:function(){
-        //内側からビューインスタンスにアクセスする時はthisを使う。
         return this.$data
       }
     }
   })
  
-console.log(data === vm.$data)
- console.log(vm.$data)
+//後からelプロパティをつけたい時に使うのが$mount。
+vm.$mount('#app')  
 
 </script>
 </body>
