@@ -12,12 +12,15 @@
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
   <!--templateタグは検証機能で表示されない。グループ化させるためのもの。複数のv-ifを条件分岐したい時に使う-->
-<template v-if="ok">
-  <p>Hello</p>
-  <p>Good Bye</p>
-  <p>おはよう</p>
-</template>
 <button @click="ok = !ok">ボタン</button>
+<!--v-ifは要素ごと消し去る-->
+<p v-if="ok"If></p>
+<!--v-showはボタンを押した後、displayをnoneにすることで消し去る。、-->
+<p v-show="ok">Show</p>
+<template v-show="ok">
+  <!--v-showではtemplateタグは使えない。また.elseなど使えない。しかし、とても頻繁に切り替えが必要な時はv-showを使う。v-ifは要素を消すので起動が遅くなる-->
+  <p>test</p>
+</template>
 </div>
 
 <script>
