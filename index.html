@@ -11,10 +11,13 @@
 
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
-  <!--条件付きレンダリング(trueの時はokを表示させる、falseならNot OK...)-->
-<p v-if="ok">OK!</p>
-<p v-else-if="maybeOK">maybeOK</p>
-<p v-else>Not OK...</p>
+  <!--templateタグは検証機能で表示されない。グループ化させるためのもの。複数のv-ifを条件分岐したい時に使う-->
+<template v-if="ok">
+  <p>Hello</p>
+  <p>Good Bye</p>
+  <p>おはよう</p>
+</template>
+<button @click="ok = !ok">ボタン</button>
 </div>
 
 <script>
@@ -22,8 +25,7 @@
   new Vue({
    el:'#app',
    data:{
-     ok:false,
-     maybeOK:true
+     ok:true
    }
    
  })
