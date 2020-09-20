@@ -11,9 +11,12 @@
 
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
+  <ul>
+    <li v-for="(first,index) in fruits">({{index}}){{fruit}}</li>
+  </ul>
    <ul>
      <!--何番目かを表示する-->
-     <li v-for="value in object">{{value}}</li>
+     <li v-for="(value,key,index) in object">({{index}}){{key}}{{value}}</li>
    </ul>
 </div>
 
