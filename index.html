@@ -13,6 +13,7 @@
 <div id="app">
   <!--条件付きレンダリング(trueの時はokを表示させる、falseならNot OK...)-->
 <p v-if="ok">OK!</p>
+<p v-else-if="maybeOK">maybeOK</p>
 <p v-else>Not OK...</p>
 </div>
 
@@ -22,6 +23,7 @@
    el:'#app',
    data:{
      ok:false,
+     maybeOK:true
    }
    
  })
