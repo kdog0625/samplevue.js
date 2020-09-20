@@ -11,20 +11,15 @@
 
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
-  <ul>
-    <li v-for="(first,index) of fruits">({{index}}){{fruit}}</li>
-    <hr>
-  </ul>
    <ul>
-     <!--何番目かを表示する-->
-     <template v-for="fruit of fruits">
-       <li>{{fruit}}</li>
-       <hr>
-     </template>
+     <!--先頭を削除しても文字は消えない(v-forディレクトリはinputタグを使いまわしている。)。それを解決するにはkey属性を使用する。key属性を使用する時、templateタグはDOMに表示されないから-->
+     <div v-for="fruit of fruits" :key="fruit">
+       <p>{{fruit}}</p>
+       <input type="text">
+     </div>
    </ul>
    <ul>
-     <!--inをofに変えられる(vue.jsはinでかく)-->
-     <li v-for="n of 10">{{n}}</li>
+    <button @click="remove">先頭を解除</button>
    </ul>
 </div>
 
@@ -34,6 +29,11 @@
    el:'#app',
    data:{
     fruits:['りんご','ばなな','ぶどう']
+   },
+   methods:{
+     remove:function(){
+       this.fruits.shift()
+     }
    }
    
  })
