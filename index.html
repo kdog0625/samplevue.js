@@ -10,32 +10,27 @@
   <script src="vue.js"></script>
 
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
-<div id="app">
-   <ul>
-     <!--先頭を削除しても文字は消えない(v-forディレクトリはinputタグを使いまわしている。)。それを解決するにはkey属性を使用する。key属性を使用する時、templateタグはDOMに表示されないから-->
-     <div v-for="fruit of fruits" :key="fruit">
-       <p>{{fruit}}</p>
-       <input type="text">
-     </div>
-   </ul>
-   <ul>
-    <button @click="remove">先頭を解除</button>
-   </ul>
+<div id="app1">
+  <p>{{message}}</p>
+</div>
+<div id="app2">
+  <p>{{message}}</p>
 </div>
 
 <script>
-  //new Vueはvue.jsの心臓部分。
+  //複数のビューインスタンスを作ることが可能
   new Vue({
-   el:'#app',
+   el:'#app1',
    data:{
-    fruits:['りんご','ばなな','ぶどう']
-   },
-   methods:{
-     remove:function(){
-       this.fruits.shift()
-     }
+     message:'インスタンス1'
    }
-   
+ })
+
+ new Vue({
+   el:'#app2',
+   data:{
+    message:'インスタンス2'
+   }
  })
 </script>
 </body>
