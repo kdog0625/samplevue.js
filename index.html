@@ -11,8 +11,9 @@
 
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
-  <!--条件付きレンダリング(trueの時はokを表示させる、falseなら表示されない)-->
+  <!--条件付きレンダリング(trueの時はokを表示させる、falseならNot OK...)-->
 <p v-if="ok">OK!</p>
+<p v-else>Not OK...</p>
 </div>
 
 <script>
@@ -20,7 +21,7 @@
   new Vue({
    el:'#app',
    data:{
-     ok:true,
+     ok:false,
    }
    
  })
