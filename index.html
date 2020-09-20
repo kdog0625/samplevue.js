@@ -12,18 +12,19 @@
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
   <ul>
-    <li v-for="(first,index) in fruits">({{index}}){{fruit}}</li>
+    <li v-for="(first,index) of fruits">({{index}}){{fruit}}</li>
     <hr>
   </ul>
    <ul>
      <!--何番目かを表示する-->
-     <template v-for="fruit in fruits">
+     <template v-for="fruit of fruits">
        <li>{{fruit}}</li>
        <hr>
      </template>
    </ul>
    <ul>
-     <li v-for="n in 10">{{n}}</li>
+     <!--inをofに変えられる(vue.jsはinでかく)-->
+     <li v-for="n of 10">{{n}}</li>
    </ul>
 </div>
 
