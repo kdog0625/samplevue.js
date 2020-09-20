@@ -23,13 +23,19 @@
      message:'こんにちは',
      name:'よしぴー'
    }
-//dataが取れているかどうかの確認をする(外部にオブジェクトを指定してそのオブジェクトをこのデータに指定できる。)
+
   var vm=new Vue({
     el:"#app",
-    data:data
+    data:data,
+    computed:{
+      myData:function(){
+        //内側からビューインスタンスにアクセスする時はthisを使う。
+        return this.$data
+      }
+    }
   })
  
-
+console.log(data === vm.$data)
  console.log(vm.$data)
 
 </script>
