@@ -17,6 +17,10 @@
   <button @click="name='ボタンから変更'">変更</button>
 </div>
 
+<div id="app2">
+  
+</div>
+
 
 <script>
   //外側からインスタンスを取得する(インスタンスを変数に入れることで解決できる)
@@ -33,10 +37,20 @@
       }
     }
   })
- 
+
+  
 //後からelプロパティをつけたい時に使うのが$mount。
 vm.$mount('#app')  
 
+
+new Vue({
+    data:{
+      name:'よしぴー'
+    },
+    //templateプロパティを以下のように使える。
+    template:'<h1>こんにちは、{{name}}</h1>'
+  }).$mount('#app2')
+ 
 </script>
 </body>
 </html>
