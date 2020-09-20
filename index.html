@@ -10,36 +10,29 @@
   <script src="vue.js"></script>
 
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
-<div id="app1">
+<div id="app">
   <p>{{message}}</p>
+  <!--リアクティブはデータが変わると自動的にデータが変わること-->
+  <p>{{name}}</p>
+  <button @click="name='ボタンから変更'">変更</button>
 </div>
-<div id="app2">
-  <p>{{message}}</p>
-  <button @click="changeMessage1">インスタンス1のmessageを変更</button>
-</div>
+
 
 <script>
   //外側からインスタンスを取得する(インスタンスを変数に入れることで解決できる)
-  var vm1=new Vue({
-   el:'#app1',
+  var vm=new Vue({
+   el:'#app',
    data:{
-     message:'インスタンス1'
+     message:'こんにちは',
+     name:'よしぴー'
    }
  })
+ //例 dataのなかにageを付け加えたいときvm.messageで変更は可能だが、vm.age=21は適用されない
+// vm.message= 'よしぴー'
 
- 
-
- var vm2=new Vue({
-   el:'#app2',
-   data:{
-    message:'インスタンス2'
-   },
-   methods:{
-    changeMessage1: function(){
-      vm1.message = 'インスタンス2から変えました'
-    }
-   }
- })
+//dataのとこに最初にリアクティブにしたいプロパティを入れる。vue.jsはビューインスタンスが作成された瞬間、ビューはそこから得ている全てのプロパティを割り歩く
+//getterはその変数が参照されたときにこれらの関数を実行するもの。(検証に記載あり。)
+//それらのデータが書き換わったときに何か関数を実行したい。その関数を書くところをsetterという。
 </script>
 </body>
 </html>
