@@ -12,8 +12,8 @@
 <!-- テンプレート構文(HTMLではなくテンプレートを書いている)は以下のもの。vue.jsがテンプレートを見て複雑な処理をして最終的にHTMLに変えてくれる -->
 <div id="app">
    <ul>
-     <!--v-forディレクトリは複数形を単数形で表示する-->
-     <li v-for="fruit in fruits">{{fruit}}</li>
+     <!--何番目かを表示する-->
+     <li v-for="(fruit,index) in fruits">({{index}}){{fruit}}</li>
    </ul>
 </div>
 
