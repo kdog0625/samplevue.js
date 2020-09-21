@@ -20,6 +20,9 @@
 <div id="app2">
   
 </div>
+<div id="app3">
+  
+</div>
 
 
 <script>
@@ -50,7 +53,25 @@ new Vue({
     //templateプロパティを以下のように使える。
     template:'<h1>こんにちは、{{name}}</h1>'
   }).$mount('#app2')
- 
+
+  new Vue({
+    data:{
+      name:'よしぴー'
+    },
+    //render関数(第一引数を取れる。)ただのjavascriptのオブジェクトを作っているだけ。
+    render: function(createElement){
+      //renderは第一引数にタグ、第二引数に中に入れたいもの
+      return createElement('h1','こんにちは'+ this.name);
+    }
+  }).$mount('#app3')
+
+//DOM要素を作っている。全てオブジェクトになっている。直接DOMにアクセスしている。
+  var dir=document.createElement('div');
+ console.log(dir);
+//ブラウザが作ったものがドキュメント
+ console.log(document)
+ //
+ console.dir(document)
 </script>
 </body>
 </html>
