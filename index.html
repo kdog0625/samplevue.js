@@ -14,6 +14,8 @@
   <p>{{message}}</p>
   <p>{{name}}</p>
   <p>{{myData}}</p>
+  <hello></hello>
+  <hello></hello>
   <button @click="name='ボタンから変更'">変更</button>
 </div>
 
@@ -27,6 +29,12 @@
   <button @click="destroy">インスタンスを破壊</button>
 </div>
 
+<!--4つ書いても1個しか表示されない。-->
+<!-- <div class="hello"></div>
+<div class="hello"></div>
+<div class="hello"></div>
+<div class="hello"></div> -->
+
 
 <script>
   //外側からインスタンスを取得する(インスタンスを変数に入れることで解決できる)
@@ -35,6 +43,12 @@
      name:'よしぴー'
    }
 
+   //以下のような記載で全てのインスタンスでhelloが使える
+  Vue.component('hello',{
+    template:'<p>こんにちは</p>'
+  });
+   
+  
   var vm=new Vue({
     data:data,
     computed:{
@@ -108,6 +122,11 @@ new Vue({
      }
    }
 
+ })
+
+ new Vue({
+   el:'hello',
+   template:'<P>こんにちは</p>'
  })
 </script>
 </body>
